@@ -1,3 +1,6 @@
+DEVELOPED BY:HARIHARAN.V
+
+REGISTER NO: 212224220032
 # T-FLIPFLOP-POSEDGE
 
 **AIM:**
@@ -42,30 +45,34 @@ From the above characteristic table, we can directly write the next state equati
 
 **PROGRAM:**
 
-    input t, clk, rst;
-    output reg q;
-
-    always @(posedge clk or posedge rst) 
-    begin
-        if (rst)
-         q <= 0; // Reset the flip-flop
-        else if (t==0)
-         q <= q; 
-        else
-        q<=~q;
-    end
-    endmodule
-
+ module DE1( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else
+if(t)
+q<=~q;
+else
+q<=q;
+end
+assign q_bar = ~q;
+endmodule
 
 
 **RTL LOGIC FOR FLIPFLOP:**
 
-![image](https://github.com/user-attachments/assets/a5a44048-6f71-4dd8-8588-5c053a0209c9)
+<img width="1920" height="1080" alt="Screenshot (40)" src="https://github.com/user-attachments/assets/f5e1b95c-19b5-4694-a1a1-8f645a8e6b5e" />
+
 
 
 **TIMING DIAGRAM FOR FLIP FLOP:**
 
-![image](https://github.com/user-attachments/assets/3c9c6e26-49f3-497d-bf5a-2db72ff830e3)
+
+<img width="1920" height="1080" alt="Screenshot (41)" src="https://github.com/user-attachments/assets/d4ee97c7-d0d4-4b08-b630-fc5c607f76c5" />
 
 
 **RESULT:**
@@ -73,6 +80,3 @@ From the above characteristic table, we can directly write the next state equati
 Thus T-flipflop is implemented using verilog and their fuctionally using their functional table is validated.
 
 
-DEVELOPED BY:HARIHARAN.V
-
-REGISTER NO: 24002937
